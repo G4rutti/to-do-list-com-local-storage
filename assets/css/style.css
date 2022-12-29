@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+body{
+    font-family: 'Lato', sans-serif;
+    background-image: linear-gradient(to right, rgb(28, 28, 187), rgb(28, 23, 192));
+    color: white;
+}
+
+.main{
+    text-align: center;
+    margin: auto;
+    margin-top: 20vh;
+    width: 40vw;
+    height: auto;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+hr{
+    border-color: rgb(28, 28, 187);
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    width: 35vw;
+}
+.button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 3vh;
+    width: 4vw;
+}
+.inputSection input{
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    width: 20vw;
+    height: 4vh;
+}
+.inputSection input::placeholder{
+    text-align: center;
+}
+.inputSection button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 4vh;
+    width: 5vw;
+    margin-left: 1vw;
+}
+.inputSection button:hover{
+    transition-duration: 0.5s;
+    color: white;
+    background-color: rgb(28, 23, 192);
+}
+
+.activitie{
+    margin: auto;
+    width: 35vw;
+    display: flex;
+}
+.actions{
+    margin: auto;
+    margin-right: 0;
+}
+.actions button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 3vh;
+    width: 4vw;
+}
+#editar:hover{
+    transition-duration: 0.5s;
+    color: white;
+    background-color: #60E067;
+}
+#excluir:hover{
+    transition-duration: 0.5s;
+    color: white;
+    background-color: #E01300;
+}
+#feito:hover{
+    transition-duration: 0.5s;
+    color: white;
+    background-color: rgb(28, 23, 192);
+}
+#cancelar:hover{
+    transition-duration: 0.5s;
+    color: white;
+    background-color: #E01300;
+}
