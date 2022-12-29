@@ -73,23 +73,13 @@ hr{
     height: 3vh;
     width: 4vw;
 }
-#editar:hover{
-    transition-duration: 0.5s;
-    color: white;
-    background-color: #60E067;
-}
-#excluir:hover{
+.excluir:hover{
     transition-duration: 0.5s;
     color: white;
     background-color: #E01300;
 }
-#feito:hover{
+.feito:hover{
     transition-duration: 0.5s;
     color: white;
     background-color: rgb(28, 23, 192);
-}
-#cancelar:hover{
-    transition-duration: 0.5s;
-    color: white;
-    background-color: #E01300;
 }

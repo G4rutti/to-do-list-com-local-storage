@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/modal.css">
     <title>ToDo List</title>
 </head>
 <body>
@@ -13,36 +12,28 @@
         <h1>ToDo List</h1>
         <hr>
         <div class="inputSection">
-            <form>
-                <input type="text" id="atividade" placeholder="Escreva sua atividade" required>
-                <button type="submit">Enviar</button>
+            <form id="form-primario">
+                <input type="text" id="atividade" data-index="new" placeholder="Escreva sua atividade" required>
+                <button id="enviar">Enviar</button>
             </form>
         </div>
         <hr>
-        <div class="activitie">
-            <p>Atividade tal pra fazer da escola</p>
-            <div class="actions">
-                <button id="editar">Editar</button>
-                <button id="excluir">Excluir</button>
-                <button id="feito">Feito</button>
+        <div class="activities">
+            <div>
+                
             </div>
-        </div>
-        <hr>
-        <div class="modal" id="modal">
-            <div class="modal-content">
-                <header class="modal-header">
-                    <h2>Editar Atividade</h2>
-                    <span class="modal-close" id="modalClose">&#10006;</span>
-                </header>
-                <form id="form" class="modal-form">
-                    <input type="text" id="atividade" class="modal-field" placeholder="Altere sua atividade" required>
-                </form>
-                <footer class="modal-footer">
-                    <button id="editar" class="button">Editar</button>
-                    <button id="cancelar" class="button">Cancelar</button>
-                </footer>
+            <!-- <div>
+                <div class="activitie 1">
+                    <p>Atividade tal pra fazer da escola</p>
+                    <div class="actions">
+                        <button id="excluir">Excluir</button>
+                        <button id="feito">Feito</button>
+                    </div>
+                </div>
             </div>
+            <hr> -->
         </div>
+        
     </div>
 
 <script src="assets/js/main.js"></script>
