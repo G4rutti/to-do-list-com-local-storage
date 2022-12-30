@@ -10,7 +10,7 @@ const ValidarCampos = () => {
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_activities')) ?? []
 const setLocalStorage = (dbActivitie) => localStorage.setItem("db_activities", JSON.stringify(dbActivitie))
 
-//Crd - CREATE - READ - DELETE
+//Crud - CREATE - READ - UPDATE - DELETE
 const createActivitie = (activitie) => {
     const dbActivitie = getLocalStorage()
     dbActivitie.push (activitie)
@@ -18,6 +18,18 @@ const createActivitie = (activitie) => {
 }
 
 const readActivities = () => getLocalStorage()
+
+const readActivitie = (index) => {
+    const dbActivitie = readActivities()
+    const atividade = dbActivitie[index]
+    return atividade
+}
+
+const updateAtividade = (index, atividade) => {
+    const dbActivitie = readActivities()
+    dbActivitie[index] = atividade
+    setLocalStorage(dbActivitie)
+}
 
 const deleteActivitie = (index) => {
     const dbActivitie = readActivities()
@@ -61,29 +73,58 @@ const saveActivitie = () => {
 }
 const deletarAtividadeDaTela = (evento) => {
     if(evento.target.type === "submit"){
+        updateTable()
+        console.log(evento.target.dataset.action)
         const [action, index] = evento.target.id.split('-')
-        if (action == 'excluir') {
+        const atividade = readActivitie(index)
+        console.log(index)
+        if(action == "excluir"){
             deleteActivitie(index)
             updateTable()
-        } 
+            atualizarTela()
+        }
         else if(action == "feito"){
-            atividade.estado = "feito"
-            if(atividade.estado == "feito"){
-                updateTable()
-                const atividade = document.getElementById("atividade-"+index)
-                atividade.style.textDecoration = "line-through"
+            console.log(atividade)
+            if(atividade.estado == "nao feito"){
+                atividade.estado = "feito"
+                updateAtividade(index,atividade)
+                document.getElementById("atividade-"+index).style.textDecoration = 'line-through'
+                atualizarTela()
             }
-            else if(atividade.estado == "nao feito"){
-                updateTable()
-                const atividade = document.getElementById("atividade-"+index)
-                atividade.style.textDecoration = "none"
-            }
+            else{
+                atividade.estado = "nao feito"
+                updateAtividade(index,atividade)
+                document.getElementById("atividade-"+index).style.textDecoration = 'solid'
+                atualizarTela()         
+             }
             
         }
     }
 }
+const atualizarTela = () => {
+    const dbActivitie = readActivities()
+    for(let i = 0; i < dbActivitie.length; i = i + 1) {
+        if(dbActivitie[i].estado == "feito"){
+            console.log(dbActivitie[i])
+            const atividade = document.getElementById("atividade-"+i)
+            atividade.style.textDecoration = "line-through" 
+        }
+        else{
+            console.log(dbActivitie[i])
+
+            const atividade = document.getElementById("atividade-"+i)
+            atividade.style.textDecoration = "none" 
+        }
+    }
+    // dbActivitie.forEach(function(atividade,index){
+    //     console.log(atividade, index)
+    // })
+
+
+}
 
 updateTable()
+atualizarTela()
 
 
 
