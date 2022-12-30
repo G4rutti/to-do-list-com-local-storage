@@ -83,3 +83,26 @@ hr{
     color: white;
     background-color: rgb(28, 23, 192);
 }
+
+@media screen and (max-width:900px) {
+    .main{
+        width: 80vw;
+    }
+    hr{
+        margin: 1vh;
+        width: 75vw;
+    }
+    .inputSection input{
+        width: 50vw;
+    }
+    .inputSection button{
+        width: 20vw;
+    }
+    .actions button{
+        height: 3vh;
+        width: 20vw;
+    }
+    .activitie{
+        width: 75vw;
+    }
+}
