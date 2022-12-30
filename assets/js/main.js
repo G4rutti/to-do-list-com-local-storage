@@ -1,10 +1,50 @@
 'use strict'
 
+var atividadeAntiga = ""
 //Funções
 const ValidarCampos = () => {
     return document.getElementById('form-primario').reportValidity()
 }
+const atualizarTela = () => {
+    const dbActivitie = readActivities()
+    for(let i = 0; i < dbActivitie.length; i = i + 1) {
+        if(dbActivitie[i].estado == "feito"){
+            console.log(dbActivitie[i])
+            const atividade = document.getElementById("atividade-"+i)
+            atividade.style.textDecoration = "line-through" 
+        }
+        else{
+            console.log(dbActivitie[i])
 
+            const atividade = document.getElementById("atividade-"+i)
+            atividade.style.textDecoration = "none" 
+        }
+    }
+    // dbActivitie.forEach(function(atividade,index){
+    //     console.log(atividade, index)
+    // })
+
+
+}
+const openModal = () =>{
+    document.getElementById('modal').classList.add('active')
+} 
+const closeModal = () => {
+    document.getElementById('modal').classList.remove('active')
+}
+
+const atualizarNoBanco = () => {
+    const dbActivitie = readActivities()
+    for(let i = 0; i < dbActivitie.length; i = i + 1) {
+        if(dbActivitie[i].atividade == atividadeAntiga){
+            console.log(dbActivitie[i])
+            dbActivitie[i].atividade = document.getElementById("updateAtvd").value
+            updateAtividade(i,dbActivitie[i])
+            closeModal()
+        }
+        updateTable()
+    }
+}
 
 
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_activities')) ?? []
@@ -46,6 +86,7 @@ const createRow = (activitie, index) => {
         <div class="actions">
             <button id="excluir-${index}" class="excluir" data-action="excluir">Excluir</button>
             <button id="feito-${index}"  class="feito" data-action="feito">Feito</button>
+            <button id="editar-${index}" class="editar" data-action="editar">Editar</button>
         </div>
         </div>
         <hr>
@@ -71,7 +112,7 @@ const saveActivitie = () => {
         updateTable()
     }
 }
-const deletarAtividadeDaTela = (evento) => {
+const deletarEditarRiscarAtividadeDaTela = (evento) => {
     if(evento.target.type === "submit"){
         updateTable()
         console.log(evento.target.dataset.action)
@@ -99,28 +140,15 @@ const deletarAtividadeDaTela = (evento) => {
              }
             
         }
-    }
-}
-const atualizarTela = () => {
-    const dbActivitie = readActivities()
-    for(let i = 0; i < dbActivitie.length; i = i + 1) {
-        if(dbActivitie[i].estado == "feito"){
-            console.log(dbActivitie[i])
-            const atividade = document.getElementById("atividade-"+i)
-            atividade.style.textDecoration = "line-through" 
-        }
         else{
-            console.log(dbActivitie[i])
-
-            const atividade = document.getElementById("atividade-"+i)
-            atividade.style.textDecoration = "none" 
+            console.log(atividade)
+            // const novaAtividade = document.getElementById("atividade-"+index).value
+            // console.log(novaAtividade)
+            openModal()
+            document.getElementById("updateAtvd").value = atividade.atividade
+            atividadeAntiga = atividade.atividade
         }
     }
-    // dbActivitie.forEach(function(atividade,index){
-    //     console.log(atividade, index)
-    // })
-
-
 }
 
 updateTable()
@@ -132,4 +160,10 @@ atualizarTela()
 document.getElementById("enviar")
     .addEventListener('click', saveActivitie)
 document.querySelector(".main>.activities>div")
-    .addEventListener('click', deletarAtividadeDaTela)
+    .addEventListener('click', deletarEditarRiscarAtividadeDaTela)
+document.getElementById('cancelar')
+    .addEventListener('click', closeModal)
+document.getElementById('modalClose')
+    .addEventListener('click', closeModal)
+document.getElementById("salvar")
+    .addEventListener("click", atualizarNoBanco)

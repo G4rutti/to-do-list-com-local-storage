@@ -83,6 +83,16 @@ hr{
     color: white;
     background-color: rgb(28, 23, 192);
 }
+.feito:hover{
+    transition-duration: 0.5s;
+    color: white;
+    background-color: rgb(28, 23, 192);
+}
+.editar:hover{
+    transition-duration: 0.5s;
+    color: white;
+    background-color: #60E067;
+}
 
 @media screen and (max-width:900px) {
     .main{
