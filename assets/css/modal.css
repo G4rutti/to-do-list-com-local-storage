@@ -99,4 +99,8 @@
     .modal-field{
         width:100%;
     }
+    button{
+        height: 3vh;
+        width: 20vw;
+    }
 }
